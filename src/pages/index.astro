@@ -4,47 +4,186 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
-
+---
+const siteTitle = "Stonecrest Pipes";
+const tagline = "Built Around the Craft of Pipe Smoking";
+---
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{siteTitle}</title>
+    <meta
+      name="description"
+      content="Stonecrest Pipes is an upcoming home for pipe collectors and enthusiasts."
+    />
+    <style>
+      :root {
+        --bg: #111111;
+        --panel: #1b1b1b;
+        --text: #f5f1e8;
+        --muted: #c9bda8;
+        --accent: #b88a4a;
+        --border: #2a2a2a;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%);
+        color: var(--text);
+      }
+
+      .wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 860px;
+        background: rgba(27, 27, 27, 0.92);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 48px 32px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      }
+
+      .eyebrow {
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: .12em;
+        font-size: .8rem;
+        margin-bottom: 14px;
+      }
+
+      h1 {
+        font-size: clamp(2.4rem, 5vw, 4.5rem);
+        line-height: 1.05;
+        margin: 0 0 16px 0;
+      }
+
+      .tagline {
+        font-size: 1.2rem;
+        color: var(--muted);
+        margin: 0 0 18px 0;
+      }
+
+      .intro {
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 700px;
+        margin-bottom: 28px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 28px 0;
+      }
+
+      .button, .button-secondary {
+        display: inline-block;
+        text-decoration: none;
+        padding: 14px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      .button {
+        background: var(--accent);
+        color: #111;
+      }
+
+      .button-secondary {
+        border: 1px solid #4a4034;
+        color: var(--text);
+      }
+
+      .signup {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      .signup h2 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      input[type="email"] {
+        flex: 1 1 260px;
+        min-width: 220px;
+        padding: 14px 16px;
+        border-radius: 999px;
+        border: 1px solid #3a3a3a;
+        background: #121212;
+        color: var(--text);
+      }
+
+      button[type="submit"] {
+        padding: 14px 18px;
+        border: none;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #111;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .note {
+        color: var(--muted);
+        font-size: .92rem;
+        margin-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="card">
+        <div class="eyebrow">Coming Soon</div>
+        <h1>{siteTitle}</h1>
+        <p class="tagline">{tagline}</p>
+        <p class="intro">
+          Stonecrest Pipes is being built as a home for collectors, enthusiasts,
+          and the wider world of tobacco pipes — with future features around
+          discovery, collecting, news, events, and pipe stories.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="#signup">Join the list</a>
+          <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">Contact</a>
+        </div>
+
+        <div class="signup" id="signup">
+          <h2>Get launch updates</h2>
+          <form name="signup" method="POST" data-netlify="false">
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="note">
+            For now, this form is just a placeholder until you connect an email service.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
