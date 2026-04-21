@@ -19,7 +19,7 @@ const siteDescription =
         --panel-border: rgba(125, 63, 78, 0.55);
         --brand: #7b3f4d;
         --brand-2: #9f6571;
-        --text: #eadf d3;
+        --text: #eadfd3;
         --text-soft: #cdb9ab;
         --text-muted: #a48d82;
         --shadow: rgba(0, 0, 0, 0.45);
@@ -36,7 +36,7 @@ const siteDescription =
       body {
         margin: 0;
         min-height: 100vh;
-        color: #eadfd3;
+        color: var(--text);
         font-family: Georgia, "Times New Roman", serif;
         background:
           radial-gradient(circle at top left, rgba(123, 63, 77, 0.08), transparent 28%),
@@ -60,8 +60,8 @@ const siteDescription =
         opacity: 0.08;
         pointer-events: none;
         background-image:
-          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         background-size: 3px 3px, 4px 4px;
         mix-blend-mode: soft-light;
       }
@@ -164,6 +164,7 @@ const siteDescription =
         color: #f0e6dc;
         text-wrap: balance;
         text-shadow: 0 3px 22px rgba(0, 0, 0, 0.28);
+        text-align: center;
       }
 
       .intro {
@@ -370,10 +371,10 @@ const siteDescription =
         top: 0;
         width: 42px;
         height: 220px;
-        background: linear-gradient(180deg, #090909, #1a1a1a 55%, #111);
+        background: linear-gradient(180deg, #090909, #1a1a1a 55%, #111111);
         border-radius: 24px;
         transform: rotate(22deg);
-        box-shadow: inset -3px 0 6px rgba(255,255,255,0.06);
+        box-shadow: inset -3px 0 6px rgba(255, 255, 255, 0.06);
       }
 
       .pipe-band {
@@ -400,9 +401,9 @@ const siteDescription =
         border-radius: 42% 42% 48% 48% / 38% 38% 62% 62%;
         transform: rotate(-16deg);
         box-shadow:
-          inset -12px -18px 22px rgba(0,0,0,0.22),
-          inset 10px 8px 16px rgba(255,255,255,0.05),
-          0 14px 30px rgba(0,0,0,0.35);
+          inset -12px -18px 22px rgba(0, 0, 0, 0.22),
+          inset 10px 8px 16px rgba(255, 255, 255, 0.05),
+          0 14px 30px rgba(0, 0, 0, 0.35);
       }
 
       .pipe-rim {
@@ -428,7 +429,7 @@ const siteDescription =
         background: linear-gradient(180deg, #362017, #1a100d);
         border-radius: 8px;
         transform: rotate(-7deg);
-        box-shadow: 0 12px 24px rgba(0,0,0,0.26);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.26);
       }
 
       .visually-hidden {
@@ -571,7 +572,9 @@ const siteDescription =
 
           <div class="actions">
             <a class="button" href="#signup">Join the List</a>
-            <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">Contact</a>
+            <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">
+              Contact
+            </a>
           </div>
 
           <div class="signup-panel" id="signup">
