@@ -1,23 +1,17 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
----
----
 const siteTitle = "Stonecrest Pipes";
+const siteDescription =
+  "Stonecrest Pipes is an upcoming home for pipe collectors and enthusiasts.";
 const tagline = "Built Around the Craft of Pipe Smoking";
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{siteTitle}</title>
-    <meta
-      name="description"
-      content="Stonecrest Pipes is an upcoming home for pipe collectors and enthusiasts."
-    />
+    <meta name="description" content={siteDescription} />
     <style>
       :root {
         --bg: #111111;
@@ -170,7 +164,7 @@ const tagline = "Built Around the Craft of Pipe Smoking";
 
         <div class="signup" id="signup">
           <h2>Get launch updates</h2>
-          <form name="signup" method="POST" data-netlify="false">
+          <form name="signup" method="POST">
             <input
               type="email"
               name="email"
