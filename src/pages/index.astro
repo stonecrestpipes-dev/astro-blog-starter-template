@@ -1,8 +1,7 @@
 ---
 const siteTitle = "Stonecrest Pipes";
 const siteDescription =
-  "Stonecrest Pipes is an upcoming home for pipe collectors and enthusiasts.";
-const tagline = "Built Around the Craft of Pipe Smoking";
+  "Stonecrest Pipes is being built as a home for collectors, enthusiasts, and the wider world of tobacco pipes.";
 ---
 
 <!doctype html>
@@ -14,170 +13,608 @@ const tagline = "Built Around the Craft of Pipe Smoking";
     <meta name="description" content={siteDescription} />
     <style>
       :root {
-        --bg: #111111;
-        --panel: #1b1b1b;
-        --text: #f5f1e8;
-        --muted: #c9bda8;
-        --accent: #b88a4a;
-        --border: #2a2a2a;
+        --bg: #090607;
+        --bg-soft: #130d0f;
+        --panel: rgba(14, 9, 10, 0.78);
+        --panel-border: rgba(125, 63, 78, 0.55);
+        --brand: #7b3f4d;
+        --brand-2: #9f6571;
+        --text: #eadf d3;
+        --text-soft: #cdb9ab;
+        --text-muted: #a48d82;
+        --shadow: rgba(0, 0, 0, 0.45);
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         margin: 0;
+        min-height: 100vh;
+        color: #eadfd3;
         font-family: Georgia, "Times New Roman", serif;
-        background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%);
-        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(123, 63, 77, 0.08), transparent 28%),
+          radial-gradient(circle at bottom center, rgba(90, 42, 30, 0.14), transparent 34%),
+          linear-gradient(180deg, #0a0607 0%, #120b0d 45%, #0a0607 100%);
       }
 
-      .wrap {
+      a {
+        color: inherit;
+      }
+
+      .page {
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.08;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 4px 4px;
+        mix-blend-mode: soft-light;
+      }
+
+      .smoke {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .smoke::before,
+      .smoke::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(22px);
+        opacity: 0.12;
+      }
+
+      .smoke::before {
+        width: 360px;
+        height: 720px;
+        left: -80px;
+        top: 120px;
+        background:
+          radial-gradient(circle at 50% 20%, rgba(172, 116, 89, 0.25), transparent 46%),
+          radial-gradient(circle at 40% 60%, rgba(123, 63, 77, 0.2), transparent 52%);
+        transform: rotate(-12deg);
+      }
+
+      .smoke::after {
+        width: 320px;
+        height: 760px;
+        right: -90px;
+        bottom: 40px;
+        background:
+          radial-gradient(circle at 60% 30%, rgba(123, 63, 77, 0.24), transparent 46%),
+          radial-gradient(circle at 55% 70%, rgba(137, 88, 58, 0.18), transparent 54%);
+        transform: rotate(10deg);
+      }
+
+      .hero {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 1200px);
+        margin: 0 auto;
         min-height: 100vh;
         display: grid;
-        place-items: center;
-        padding: 32px;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 32px;
+        align-items: center;
+        padding: 40px 28px 56px;
       }
 
-      .card {
-        width: 100%;
-        max-width: 860px;
-        background: rgba(27, 27, 27, 0.92);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 48px 32px;
-        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      .content {
+        max-width: 760px;
+      }
+
+      .logo-wrap {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 28px;
+      }
+
+      .logo {
+        width: min(100%, 360px);
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+      }
+
+      .eyebrow-row {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+
+      .eyebrow-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, transparent, rgba(123, 63, 77, 0.85), transparent);
       }
 
       .eyebrow {
-        color: var(--accent);
+        color: var(--text-soft);
         text-transform: uppercase;
-        letter-spacing: .12em;
-        font-size: .8rem;
-        margin-bottom: 14px;
+        letter-spacing: 0.22em;
+        font-size: 0.86rem;
+        white-space: nowrap;
       }
 
       h1 {
-        font-size: clamp(2.4rem, 5vw, 4.5rem);
-        line-height: 1.05;
-        margin: 0 0 16px 0;
-      }
-
-      .tagline {
-        font-size: 1.2rem;
-        color: var(--muted);
-        margin: 0 0 18px 0;
+        margin: 0 0 24px 0;
+        font-size: clamp(3rem, 7vw, 6.2rem);
+        line-height: 0.95;
+        letter-spacing: 0.015em;
+        text-transform: uppercase;
+        color: #f0e6dc;
+        text-wrap: balance;
+        text-shadow: 0 3px 22px rgba(0, 0, 0, 0.28);
       }
 
       .intro {
-        font-size: 1rem;
+        max-width: 760px;
+        margin: 0 auto 30px;
+        font-size: clamp(1.05rem, 2vw, 1.5rem);
         line-height: 1.7;
-        max-width: 700px;
-        margin-bottom: 28px;
+        color: var(--text-soft);
+        text-align: center;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin: 28px 0;
+        justify-content: center;
+        gap: 18px;
+        margin-bottom: 46px;
       }
 
-      .button, .button-secondary {
-        display: inline-block;
-        text-decoration: none;
-        padding: 14px 18px;
+      .button,
+      .button-secondary {
+        min-width: 220px;
+        padding: 16px 24px;
         border-radius: 999px;
-        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
       }
 
       .button {
-        background: var(--accent);
-        color: #111;
+        background: linear-gradient(180deg, #8d4d5c 0%, #713845 100%);
+        color: #f7eee8;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
       }
 
       .button-secondary {
-        border: 1px solid #4a4034;
-        color: var(--text);
+        border: 1px solid rgba(123, 63, 77, 0.85);
+        color: #f2e7df;
+        background: rgba(16, 10, 12, 0.35);
       }
 
-      .signup {
-        margin-top: 24px;
-        padding-top: 24px;
-        border-top: 1px solid var(--border);
+      .button:hover,
+      .button-secondary:hover {
+        transform: translateY(-1px);
       }
 
-      .signup h2 {
-        margin-top: 0;
-        font-size: 1.2rem;
+      .signup-panel {
+        position: relative;
+        margin: 0 auto;
+        max-width: 900px;
+        padding: 38px 34px 34px;
+        background: linear-gradient(180deg, rgba(14, 9, 10, 0.74), rgba(9, 6, 7, 0.84));
+        border: 1px solid var(--panel-border);
+        box-shadow: 0 18px 40px var(--shadow);
+        backdrop-filter: blur(4px);
+      }
+
+      .signup-icon {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 14px;
+        color: var(--brand-2);
+      }
+
+      .signup-panel h2 {
+        margin: 0 0 12px 0;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        color: var(--brand-2);
+      }
+
+      .signup-subtitle {
+        margin: 0 0 28px 0;
+        text-align: center;
+        color: #dfd0c5;
+        font-size: clamp(1rem, 1.8vw, 1.35rem);
       }
 
       form {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 16px;
+        gap: 14px;
+        align-items: center;
       }
 
       input[type="email"] {
-        flex: 1 1 260px;
-        min-width: 220px;
-        padding: 14px 16px;
+        flex: 1;
+        min-width: 0;
+        padding: 20px 24px;
         border-radius: 999px;
-        border: 1px solid #3a3a3a;
-        background: #121212;
-        color: var(--text);
+        border: 1px solid rgba(123, 63, 77, 0.72);
+        background: rgba(12, 8, 9, 0.74);
+        color: #f3e7df;
+        font-size: 1.02rem;
+        outline: none;
+      }
+
+      input[type="email"]::placeholder {
+        color: var(--text-muted);
       }
 
       button[type="submit"] {
-        padding: 14px 18px;
         border: none;
+        padding: 20px 34px;
         border-radius: 999px;
-        background: var(--accent);
-        color: #111;
+        background: linear-gradient(180deg, #8d4d5c 0%, #713845 100%);
+        color: #f7eee8;
+        font-size: 1rem;
         font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         cursor: pointer;
       }
 
       .note {
-        color: var(--muted);
-        font-size: .92rem;
-        margin-top: 12px;
+        margin: 22px 0 0 0;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin: 34px auto 0;
+        max-width: 520px;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(90deg, transparent, rgba(123, 63, 77, 0.8), transparent);
+      }
+
+      .divider-mark {
+        color: var(--brand-2);
+        font-size: 1.7rem;
+        line-height: 1;
+      }
+
+      .visual {
+        position: relative;
+        min-height: 760px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .pipe-glow {
+        position: absolute;
+        inset: auto 12% 6% auto;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(168, 98, 62, 0.24), transparent 65%);
+        filter: blur(12px);
+      }
+
+      .pipe-card {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: min(100%, 500px);
+        height: 78%;
+        border-radius: 24px 24px 0 0;
+        background:
+          linear-gradient(180deg, rgba(18, 11, 13, 0.12), rgba(18, 11, 13, 0.82)),
+          radial-gradient(circle at 30% 28%, rgba(86, 41, 28, 0.4), transparent 34%),
+          linear-gradient(180deg, #10090b 0%, #1a1011 52%, #0c0708 100%);
+        box-shadow: inset 0 0 0 1px rgba(123, 63, 77, 0.16);
+        overflow: hidden;
+      }
+
+      .pipe-card::before {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 34%;
+        background:
+          linear-gradient(180deg, transparent, rgba(72, 38, 24, 0.28)),
+          linear-gradient(90deg, rgba(45, 28, 18, 0.7), rgba(82, 51, 35, 0.34), rgba(30, 18, 14, 0.7));
+      }
+
+      .pipe {
+        position: absolute;
+        right: 34px;
+        bottom: 64px;
+        width: 310px;
+        height: 380px;
+      }
+
+      .pipe-stem {
+        position: absolute;
+        right: 74px;
+        top: 0;
+        width: 42px;
+        height: 220px;
+        background: linear-gradient(180deg, #090909, #1a1a1a 55%, #111);
+        border-radius: 24px;
+        transform: rotate(22deg);
+        box-shadow: inset -3px 0 6px rgba(255,255,255,0.06);
+      }
+
+      .pipe-band {
+        position: absolute;
+        right: 92px;
+        top: 176px;
+        width: 34px;
+        height: 16px;
+        background: linear-gradient(180deg, #d5b383, #a67d50);
+        border-radius: 8px;
+        transform: rotate(22deg);
+      }
+
+      .pipe-bowl {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 170px;
+        height: 190px;
+        background:
+          radial-gradient(circle at 35% 35%, rgba(191, 121, 72, 0.32), transparent 30%),
+          radial-gradient(circle at 55% 65%, rgba(70, 33, 18, 0.45), transparent 60%),
+          linear-gradient(180deg, #6d3a21 0%, #4f2618 55%, #2f160f 100%);
+        border-radius: 42% 42% 48% 48% / 38% 38% 62% 62%;
+        transform: rotate(-16deg);
+        box-shadow:
+          inset -12px -18px 22px rgba(0,0,0,0.22),
+          inset 10px 8px 16px rgba(255,255,255,0.05),
+          0 14px 30px rgba(0,0,0,0.35);
+      }
+
+      .pipe-rim {
+        position: absolute;
+        right: 18px;
+        bottom: 112px;
+        width: 108px;
+        height: 62px;
+        background: #2b170f;
+        border-radius: 50%;
+        transform: rotate(-16deg);
+        box-shadow:
+          inset 0 0 0 10px #76472b,
+          inset 0 0 0 18px #3a1d12;
+      }
+
+      .pipe-shelf {
+        position: absolute;
+        right: -10px;
+        bottom: 16px;
+        width: 300px;
+        height: 42px;
+        background: linear-gradient(180deg, #362017, #1a100d);
+        border-radius: 8px;
+        transform: rotate(-7deg);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.26);
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 980px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding-top: 24px;
+        }
+
+        .visual {
+          min-height: 360px;
+          order: 2;
+        }
+
+        .content {
+          order: 1;
+        }
+
+        .pipe-card {
+          position: relative;
+          width: 100%;
+          max-width: 480px;
+          height: 320px;
+          margin: 0 auto;
+          border-radius: 20px;
+        }
+
+        .pipe {
+          transform: scale(0.86);
+          transform-origin: bottom right;
+          right: 18px;
+          bottom: 28px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 20px 16px 40px;
+        }
+
+        .logo {
+          width: min(100%, 280px);
+        }
+
+        .eyebrow-row {
+          gap: 10px;
+          margin-bottom: 18px;
+        }
+
+        h1 {
+          font-size: clamp(2.2rem, 13vw, 4rem);
+        }
+
+        .intro {
+          font-size: 1rem;
+          margin-bottom: 24px;
+        }
+
+        .actions {
+          gap: 12px;
+          margin-bottom: 30px;
+        }
+
+        .button,
+        .button-secondary {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .signup-panel {
+          padding: 26px 18px;
+        }
+
+        form {
+          flex-direction: column;
+        }
+
+        input[type="email"],
+        button[type="submit"] {
+          width: 100%;
+        }
+
+        .visual {
+          min-height: 280px;
+        }
+
+        .pipe-card {
+          height: 240px;
+        }
+
+        .pipe {
+          transform: scale(0.62);
+          right: -8px;
+          bottom: 10px;
+        }
       }
     </style>
   </head>
   <body>
-    <main class="wrap">
-      <section class="card">
-        <div class="eyebrow">Coming Soon</div>
-        <h1>{siteTitle}</h1>
-        <p class="tagline">{tagline}</p>
-        <p class="intro">
-          Stonecrest Pipes is being built as a home for collectors, enthusiasts,
-          and the wider world of tobacco pipes — with future features around
-          discovery, collecting, news, events, and pipe stories.
-        </p>
+    <div class="page">
+      <div class="grain"></div>
+      <div class="smoke"></div>
 
-        <div class="actions">
-          <a class="button" href="#signup">Join the list</a>
-          <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">Contact</a>
-        </div>
-
-        <div class="signup" id="signup">
-          <h2>Get launch updates</h2>
-          <form name="signup" method="POST">
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email address"
-              required
+      <main class="hero">
+        <section class="content">
+          <div class="logo-wrap">
+            <img
+              class="logo"
+              src="/logo.png"
+              alt="Stonecrest Pipes logo"
             />
-            <button type="submit">Subscribe</button>
-          </form>
-          <p class="note">
-            For now, this form is just a placeholder until you connect an email service.
+          </div>
+
+          <div class="eyebrow-row">
+            <span class="eyebrow-line"></span>
+            <div class="eyebrow">Coming Soon</div>
+            <span class="eyebrow-line"></span>
+          </div>
+
+          <h1>Built Around the Craft of Pipe Smoking</h1>
+
+          <p class="intro">
+            Stonecrest Pipes is being built as a home for collectors,
+            enthusiasts, and the wider world of tobacco pipes — with future
+            features around discovery, collecting, news, events, and pipe
+            stories.
           </p>
-        </div>
-      </section>
-    </main>
+
+          <div class="actions">
+            <a class="button" href="#signup">Join the List</a>
+            <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">Contact</a>
+          </div>
+
+          <div class="signup-panel" id="signup">
+            <div class="signup-icon">❦</div>
+            <h2>Get Launch Updates</h2>
+            <p class="signup-subtitle">
+              Be the first to know when we go live.
+            </p>
+
+            <form name="signup" method="POST">
+              <label class="visually-hidden" for="email">Email address</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+              />
+              <button type="submit">Subscribe</button>
+            </form>
+
+            <p class="note">
+              For now, this form is just a placeholder until we connect an email service.
+            </p>
+          </div>
+
+          <div class="divider">
+            <span class="divider-mark">❦</span>
+          </div>
+        </section>
+
+        <aside class="visual" aria-hidden="true">
+          <div class="pipe-glow"></div>
+          <div class="pipe-card"></div>
+          <div class="pipe">
+            <div class="pipe-stem"></div>
+            <div class="pipe-band"></div>
+            <div class="pipe-bowl"></div>
+            <div class="pipe-rim"></div>
+            <div class="pipe-shelf"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
   </body>
 </html>
