@@ -107,18 +107,16 @@ const siteDescription =
       .hero {
         position: relative;
         z-index: 1;
-        width: min(100%, 1200px);
+        width: min(100%, 900px);
         margin: 0 auto;
         min-height: 100vh;
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 32px;
-        align-items: center;
+        display: block;
         padding: 40px 28px 56px;
       }
 
       .content {
         max-width: 760px;
+        margin: 0 auto;
       }
 
       .logo-wrap {
@@ -314,124 +312,6 @@ const siteDescription =
         line-height: 1;
       }
 
-      .visual {
-        position: relative;
-        min-height: 760px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-      }
-
-      .pipe-glow {
-        position: absolute;
-        inset: auto 12% 6% auto;
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(168, 98, 62, 0.24), transparent 65%);
-        filter: blur(12px);
-      }
-
-      .pipe-card {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: min(100%, 500px);
-        height: 78%;
-        border-radius: 24px 24px 0 0;
-        background:
-          linear-gradient(180deg, rgba(18, 11, 13, 0.12), rgba(18, 11, 13, 0.82)),
-          radial-gradient(circle at 30% 28%, rgba(86, 41, 28, 0.4), transparent 34%),
-          linear-gradient(180deg, #10090b 0%, #1a1011 52%, #0c0708 100%);
-        box-shadow: inset 0 0 0 1px rgba(123, 63, 77, 0.16);
-        overflow: hidden;
-      }
-
-      .pipe-card::before {
-        content: "";
-        position: absolute;
-        inset: auto 0 0 0;
-        height: 34%;
-        background:
-          linear-gradient(180deg, transparent, rgba(72, 38, 24, 0.28)),
-          linear-gradient(90deg, rgba(45, 28, 18, 0.7), rgba(82, 51, 35, 0.34), rgba(30, 18, 14, 0.7));
-      }
-
-      .pipe {
-        position: absolute;
-        right: 34px;
-        bottom: 64px;
-        width: 310px;
-        height: 380px;
-      }
-
-      .pipe-stem {
-        position: absolute;
-        right: 74px;
-        top: 0;
-        width: 42px;
-        height: 220px;
-        background: linear-gradient(180deg, #090909, #1a1a1a 55%, #111111);
-        border-radius: 24px;
-        transform: rotate(22deg);
-        box-shadow: inset -3px 0 6px rgba(255, 255, 255, 0.06);
-      }
-
-      .pipe-band {
-        position: absolute;
-        right: 92px;
-        top: 176px;
-        width: 34px;
-        height: 16px;
-        background: linear-gradient(180deg, #d5b383, #a67d50);
-        border-radius: 8px;
-        transform: rotate(22deg);
-      }
-
-      .pipe-bowl {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 170px;
-        height: 190px;
-        background:
-          radial-gradient(circle at 35% 35%, rgba(191, 121, 72, 0.32), transparent 30%),
-          radial-gradient(circle at 55% 65%, rgba(70, 33, 18, 0.45), transparent 60%),
-          linear-gradient(180deg, #6d3a21 0%, #4f2618 55%, #2f160f 100%);
-        border-radius: 42% 42% 48% 48% / 38% 38% 62% 62%;
-        transform: rotate(-16deg);
-        box-shadow:
-          inset -12px -18px 22px rgba(0, 0, 0, 0.22),
-          inset 10px 8px 16px rgba(255, 255, 255, 0.05),
-          0 14px 30px rgba(0, 0, 0, 0.35);
-      }
-
-      .pipe-rim {
-        position: absolute;
-        right: 18px;
-        bottom: 112px;
-        width: 108px;
-        height: 62px;
-        background: #2b170f;
-        border-radius: 50%;
-        transform: rotate(-16deg);
-        box-shadow:
-          inset 0 0 0 10px #76472b,
-          inset 0 0 0 18px #3a1d12;
-      }
-
-      .pipe-shelf {
-        position: absolute;
-        right: -10px;
-        bottom: 16px;
-        width: 300px;
-        height: 42px;
-        background: linear-gradient(180deg, #362017, #1a100d);
-        border-radius: 8px;
-        transform: rotate(-7deg);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.26);
-      }
-
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -446,34 +326,7 @@ const siteDescription =
 
       @media (max-width: 980px) {
         .hero {
-          grid-template-columns: 1fr;
-          gap: 20px;
           padding-top: 24px;
-        }
-
-        .visual {
-          min-height: 360px;
-          order: 2;
-        }
-
-        .content {
-          order: 1;
-        }
-
-        .pipe-card {
-          position: relative;
-          width: 100%;
-          max-width: 480px;
-          height: 320px;
-          margin: 0 auto;
-          border-radius: 20px;
-        }
-
-        .pipe {
-          transform: scale(0.86);
-          transform-origin: bottom right;
-          right: 18px;
-          bottom: 28px;
         }
       }
 
@@ -522,20 +375,6 @@ const siteDescription =
         input[type="email"],
         button[type="submit"] {
           width: 100%;
-        }
-
-        .visual {
-          min-height: 280px;
-        }
-
-        .pipe-card {
-          height: 240px;
-        }
-
-        .pipe {
-          transform: scale(0.62);
-          right: -8px;
-          bottom: 10px;
         }
       }
     </style>
@@ -605,8 +444,7 @@ const siteDescription =
             <span class="divider-mark">❦</span>
           </div>
         </section>
-
-       </main>
+      </main>
     </div>
   </body>
 </html>
