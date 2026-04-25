@@ -40,28 +40,20 @@ const siteDescription =
       .hero {
         width: min(100%, 800px);
         margin: 0 auto;
-        padding: 60px 24px;
+        padding: 80px 24px;
         text-align: center;
       }
 
       .logo {
         width: 280px;
         max-width: 100%;
-        margin-bottom: 30px;
-      }
-
-      .eyebrow {
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        font-size: 0.75rem;
-        color: var(--brand);
-        margin-bottom: 20px;
+        margin-bottom: 40px;
       }
 
       h1 {
         font-size: clamp(1.6rem, 3vw, 2.4rem);
         line-height: 1.2;
-        margin: 0 0 20px 0;
+        margin: 0 0 24px 0;
         text-transform: uppercase;
       }
 
@@ -70,31 +62,6 @@ const siteDescription =
         line-height: 1.6;
         color: var(--text-soft);
         margin-bottom: 40px;
-      }
-
-      .pipe-divider {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin: 30px auto;
-        max-width: 400px;
-      }
-
-      .pipe-divider::before,
-      .pipe-divider::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--brand);
-        opacity: 0.4;
-      }
-
-      .pipe-icon {
-        width: 26px;
-        height: auto;
-        transform: scaleX(-1);
-        filter: brightness(0) saturate(100%)
-          invert(16%) sepia(28%) saturate(900%) hue-rotate(330deg);
       }
 
       .signup {
@@ -151,7 +118,7 @@ const siteDescription =
 
       @media (max-width: 640px) {
         .hero {
-          padding: 40px 16px;
+          padding: 60px 16px;
         }
 
         h1 {
@@ -173,18 +140,12 @@ const siteDescription =
     <main class="hero">
       <img src="/logo.png" class="logo" alt="Stonecrest Pipes logo" />
 
-      <div class="eyebrow">Coming Soon</div>
-
       <h1>Built Around the Craft of Pipe Smoking</h1>
 
       <p class="intro">
         Stonecrest Pipes is being built as a home for collectors,
         enthusiasts, and the wider world of tobacco pipes.
       </p>
-
-      <div class="pipe-divider">
-        <img src="/pipe.png" class="pipe-icon" alt="pipe icon" />
-      </div>
 
       <div class="signup">
         <h2>Get Launch Updates</h2>
