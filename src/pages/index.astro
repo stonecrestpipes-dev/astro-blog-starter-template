@@ -38,7 +38,7 @@ const siteDescription =
       }
 
       .hero {
-        width: min(100%, 800px);
+        width: min(100%, 860px);
         margin: 0 auto;
         padding: 80px 24px;
         text-align: center;
@@ -78,23 +78,23 @@ const siteDescription =
 
       .signup-sub {
         font-size: 0.95rem;
-        margin-bottom: 20px;
+        margin-bottom: 30px; /* increased spacing */
         color: var(--text-soft);
       }
 
       .form-row {
         display: flex;
-        gap: 10px;
-        max-width: 520px;
+        gap: 12px;
+        max-width: 560px; /* slightly wider */
         margin: 0 auto;
       }
 
       input {
         flex: 1;
-        padding: 14px 16px;
+        padding: 18px 20px; /* bigger */
         border-radius: 999px;
         border: 1px solid var(--border);
-        font-size: 1rem;
+        font-size: 1.05rem;
         background: transparent;
         color: var(--text);
       }
@@ -105,13 +105,16 @@ const siteDescription =
 
       button {
         width: 40%;
-        min-width: 130px;
-        padding: 14px;
+        min-width: 150px;
+
+        padding: 18px 20px; /* bigger */
         border-radius: 999px;
         border: none;
+
         background: var(--brand);
         color: white;
         font-weight: bold;
+        font-size: 1rem;
         letter-spacing: 0.08em;
         cursor: pointer;
       }
