@@ -29,6 +29,9 @@ const siteDescription =
         --space-lg: 32px;
         --space-xl: 48px;
         --space-2xl: 72px;
+
+        /* improved button text color */
+        --button-text: #f3e7da;
       }
 
       * {
@@ -124,10 +127,6 @@ const siteDescription =
         margin: 0 auto;
       }
 
-      label {
-        display: block;
-      }
-
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -163,15 +162,17 @@ const siteDescription =
         border-radius: 999px;
         border: none;
         background: var(--brand);
-        color: #ffffff;
+        color: var(--button-text);
         font-weight: 700;
         font-size: 1rem;
         letter-spacing: 0.08em;
         cursor: pointer;
+        transition: transform 0.15s ease, filter 0.15s ease;
       }
 
       button:hover {
-        filter: brightness(1.06);
+        transform: translateY(-1px);
+        filter: brightness(1.05);
       }
 
       button:disabled {
@@ -209,14 +210,6 @@ const siteDescription =
 
         h1 {
           font-size: 1.75rem;
-        }
-
-        .intro {
-          margin-bottom: var(--space-xl);
-        }
-
-        .signup {
-          padding-top: var(--space-lg);
         }
 
         .form-row {
@@ -271,14 +264,7 @@ const siteDescription =
           </div>
 
           <div style="position: absolute; left: -5000px;" aria-hidden="true">
-            <label for="mailchimp-bot-field">Do not fill this out</label>
-            <input
-              id="mailchimp-bot-field"
-              type="text"
-              name="b_YOUR_U_YOUR_ID"
-              tabindex="-1"
-              value=""
-            />
+            <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
           </div>
 
           <p
