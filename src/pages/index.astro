@@ -1,7 +1,7 @@
 ---
 const siteTitle = "Stonecrest Pipes";
 const siteDescription =
-  "Stonecrest Pipes is being built as a home for collectors, enthusiasts, and the wider world of tobacco pipes.";
+  "Stonecrest Pipes is being built as a home for collectors and enthusiasts.";
 ---
 
 <!doctype html>
@@ -11,440 +11,186 @@ const siteDescription =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
+
     <style>
       :root {
-        --bg: #090607;
-        --bg-soft: #130d0f;
-        --panel: rgba(14, 9, 10, 0.78);
-        --panel-border: rgba(125, 63, 78, 0.55);
-        --brand: #7b3f4d;
-        --brand-2: #9f6571;
-        --text: #eadfd3;
-        --text-soft: #cdb9ab;
-        --text-muted: #a48d82;
-        --shadow: rgba(0, 0, 0, 0.45);
+        /* Updated to match your business card */
+        --bg: #d8c2a3;
+        --bg-deep: #c4a882;
+        --brand: #6b2e2e;
+        --text: #3a2a22;
+        --text-soft: #5a463b;
+        --border: rgba(107, 46, 46, 0.25);
       }
 
       * {
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         margin: 0;
         min-height: 100vh;
-        color: var(--text);
         font-family: Georgia, "Times New Roman", serif;
+        color: var(--text);
+
         background:
-          radial-gradient(circle at top left, rgba(123, 63, 77, 0.08), transparent 28%),
-          radial-gradient(circle at bottom center, rgba(90, 42, 30, 0.14), transparent 34%),
-          linear-gradient(180deg, #0a0607 0%, #120b0d 45%, #0a0607 100%);
-      }
-
-      a {
-        color: inherit;
-      }
-
-      .page {
-        position: relative;
-        overflow: hidden;
-        min-height: 100vh;
-      }
-
-      .grain {
-        position: absolute;
-        inset: 0;
-        opacity: 0.08;
-        pointer-events: none;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        background-size: 3px 3px, 4px 4px;
-        mix-blend-mode: soft-light;
-      }
-
-      .smoke {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        overflow: hidden;
-      }
-
-      .smoke::before,
-      .smoke::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(22px);
-        opacity: 0.12;
-      }
-
-      .smoke::before {
-        width: 360px;
-        height: 720px;
-        left: -80px;
-        top: 120px;
-        background:
-          radial-gradient(circle at 50% 20%, rgba(172, 116, 89, 0.25), transparent 46%),
-          radial-gradient(circle at 40% 60%, rgba(123, 63, 77, 0.2), transparent 52%);
-        transform: rotate(-12deg);
-      }
-
-      .smoke::after {
-        width: 320px;
-        height: 760px;
-        right: -90px;
-        bottom: 40px;
-        background:
-          radial-gradient(circle at 60% 30%, rgba(123, 63, 77, 0.24), transparent 46%),
-          radial-gradient(circle at 55% 70%, rgba(137, 88, 58, 0.18), transparent 54%);
-        transform: rotate(10deg);
+          radial-gradient(circle at top left, rgba(107,46,46,0.08), transparent 40%),
+          radial-gradient(circle at bottom right, rgba(90,60,40,0.12), transparent 50%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       }
 
       .hero {
-        position: relative;
-        z-index: 1;
-        width: min(100%, 900px);
+        width: min(100%, 800px);
         margin: 0 auto;
-        min-height: 100vh;
-        display: block;
-        padding: 40px 28px 56px;
-      }
-
-      .content {
-        max-width: 760px;
-        margin: 0 auto;
-      }
-
-      .logo-wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 28px;
+        padding: 60px 24px;
+        text-align: center;
       }
 
       .logo {
-        width: min(100%, 360px);
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
-      }
-
-      .eyebrow-row {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        margin-bottom: 22px;
-      }
-
-      .eyebrow-line {
-        height: 1px;
-        flex: 1;
-        background: linear-gradient(90deg, transparent, rgba(123, 63, 77, 0.85), transparent);
+        width: 280px;
+        max-width: 100%;
+        margin-bottom: 30px;
       }
 
       .eyebrow {
-        color: var(--text-soft);
         text-transform: uppercase;
-        letter-spacing: 0.22em;
-        font-size: 0.86rem;
-        white-space: nowrap;
+        letter-spacing: 0.2em;
+        font-size: 0.75rem;
+        color: var(--brand);
+        margin-bottom: 20px;
       }
 
+      /* Reduced size */
       h1 {
-        margin: 0 0 24px 0;
-        font-size: clamp(3rem, 7vw, 6.2rem);
-        line-height: 0.95;
-        letter-spacing: 0.015em;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        line-height: 1.2;
+        margin: 0 0 20px 0;
         text-transform: uppercase;
-        color: #f0e6dc;
-        text-wrap: balance;
-        text-shadow: 0 3px 22px rgba(0, 0, 0, 0.28);
-        text-align: center;
       }
 
       .intro {
-        max-width: 760px;
-        margin: 0 auto 30px;
-        font-size: clamp(1.05rem, 2vw, 1.5rem);
-        line-height: 1.7;
+        font-size: 1.1rem;
+        line-height: 1.6;
         color: var(--text-soft);
-        text-align: center;
+        margin-bottom: 40px;
       }
 
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-        margin-bottom: 46px;
+      .signup {
+        border-top: 1px solid var(--border);
+        padding-top: 30px;
       }
 
-      .button,
-      .button-secondary {
-        min-width: 220px;
-        padding: 16px 24px;
-        border-radius: 999px;
-        text-decoration: none;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 1rem;
-        font-weight: 700;
-        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      .pipe-icon {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        color: var(--brand);
       }
 
-      .button {
-        background: linear-gradient(180deg, #8d4d5c 0%, #713845 100%);
-        color: #f7eee8;
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-      }
-
-      .button-secondary {
-        border: 1px solid rgba(123, 63, 77, 0.85);
-        color: #f2e7df;
-        background: rgba(16, 10, 12, 0.35);
-      }
-
-      .button:hover,
-      .button-secondary:hover {
-        transform: translateY(-1px);
-      }
-
-      .signup-panel {
-        position: relative;
-        margin: 0 auto;
-        max-width: 900px;
-        padding: 38px 34px 34px;
-        background: linear-gradient(180deg, rgba(14, 9, 10, 0.74), rgba(9, 6, 7, 0.84));
-        border: 1px solid var(--panel-border);
-        box-shadow: 0 18px 40px var(--shadow);
-        backdrop-filter: blur(4px);
-      }
-
-      .signup-icon {
-        text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 14px;
-        color: var(--brand-2);
-      }
-
-      .signup-panel h2 {
-        margin: 0 0 12px 0;
-        text-align: center;
+      .signup h2 {
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        font-size: clamp(1.8rem, 3vw, 3rem);
-        color: var(--brand-2);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
       }
 
-      .signup-subtitle {
-        margin: 0 0 28px 0;
-        text-align: center;
-        color: #dfd0c5;
-        font-size: clamp(1rem, 1.8vw, 1.35rem);
+      .signup-sub {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        color: var(--text-soft);
       }
 
       form {
         display: flex;
-        gap: 14px;
-        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 420px;
+        margin: 0 auto;
       }
 
-      input[type="email"] {
-        flex: 1;
-        min-width: 0;
-        padding: 20px 24px;
+      input {
+        padding: 14px;
         border-radius: 999px;
-        border: 1px solid rgba(123, 63, 77, 0.72);
-        background: rgba(12, 8, 9, 0.74);
-        color: #f3e7df;
-        font-size: 1.02rem;
-        outline: none;
-      }
-
-      input[type="email"]::placeholder {
-        color: var(--text-muted);
-      }
-
-      button[type="submit"] {
-        border: none;
-        padding: 20px 34px;
-        border-radius: 999px;
-        background: linear-gradient(180deg, #8d4d5c 0%, #713845 100%);
-        color: #f7eee8;
+        border: 1px solid var(--border);
         font-size: 1rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
+      }
+
+      button {
+        padding: 14px;
+        border-radius: 999px;
+        border: none;
+        background: var(--brand);
+        color: white;
+        font-weight: bold;
+        letter-spacing: 0.08em;
         cursor: pointer;
       }
 
       .note {
-        margin: 22px 0 0 0;
-        text-align: center;
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        line-height: 1.65;
+        margin-top: 15px;
+        font-size: 0.85rem;
+        color: var(--text-soft);
       }
 
       .divider {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        margin: 34px auto 0;
-        max-width: 520px;
-      }
-
-      .divider::before,
-      .divider::after {
-        content: "";
-        height: 1px;
-        flex: 1;
-        background: linear-gradient(90deg, transparent, rgba(123, 63, 77, 0.8), transparent);
-      }
-
-      .divider-mark {
-        color: var(--brand-2);
-        font-size: 1.7rem;
-        line-height: 1;
-      }
-
-      .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
-      @media (max-width: 980px) {
-        .hero {
-          padding-top: 24px;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .hero {
-          padding: 20px 16px 40px;
-        }
-
-        .logo {
-          width: min(100%, 280px);
-        }
-
-        .eyebrow-row {
-          gap: 10px;
-          margin-bottom: 18px;
-        }
-
-        h1 {
-          font-size: clamp(2.2rem, 13vw, 4rem);
-        }
-
-        .intro {
-          font-size: 1rem;
-          margin-bottom: 24px;
-        }
-
-        .actions {
-          gap: 12px;
-          margin-bottom: 30px;
-        }
-
-        .button,
-        .button-secondary {
-          width: 100%;
-          min-width: 0;
-        }
-
-        .signup-panel {
-          padding: 26px 18px;
-        }
-
-        form {
-          flex-direction: column;
-        }
-
-        input[type="email"],
-        button[type="submit"] {
-          width: 100%;
-        }
+        margin-top: 30px;
+        font-size: 1.4rem;
+        color: var(--brand);
       }
     </style>
   </head>
+
   <body>
-    <div class="page">
-      <div class="grain"></div>
-      <div class="smoke"></div>
+    <main class="hero">
 
-      <main class="hero">
-        <section class="content">
-          <div class="logo-wrap">
-            <img
-              class="logo"
-              src="/logo.png"
-              alt="Stonecrest Pipes logo"
-            />
+      <img src="/logo.png" class="logo" alt="Stonecrest Pipes logo" />
+
+      <div class="eyebrow">Coming Soon</div>
+
+      <h1>Built Around the Craft of Pipe Smoking</h1>
+
+      <p class="intro">
+        Stonecrest Pipes is being built as a home for collectors,
+        enthusiasts, and the wider world of tobacco pipes.
+      </p>
+
+      <div class="signup">
+
+        <!-- Pipe-style icon -->
+        <div class="pipe-icon">⎯◡⎯</div>
+
+        <h2>Get Launch Updates</h2>
+
+        <p class="signup-sub">
+          Be the first to know when we go live.
+        </p>
+
+        <form
+          action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
+          method="POST"
+          target="_blank"
+        >
+          <input
+            type="email"
+            name="EMAIL"
+            placeholder="Enter your email address"
+            required
+          />
+
+          <!-- Mailchimp bot field -->
+          <div style="position: absolute; left: -5000px;">
+            <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
           </div>
 
-          <div class="eyebrow-row">
-            <span class="eyebrow-line"></span>
-            <div class="eyebrow">Coming Soon</div>
-            <span class="eyebrow-line"></span>
-          </div>
+          <button type="submit">Subscribe</button>
+        </form>
 
-          <h1>Built Around the Craft of Pipe Smoking</h1>
+        <p class="note">
+          No spam. Just updates on launch and new features.
+        </p>
 
-          <p class="intro">
-            Stonecrest Pipes is being built as a home for collectors,
-            enthusiasts, and the wider world of tobacco pipes — with future
-            features around discovery, collecting, news, events, and pipe
-            stories.
-          </p>
+        <div class="divider">⎯◡⎯</div>
 
-          <div class="actions">
-            <a class="button" href="#signup">Join the List</a>
-            <a class="button-secondary" href="mailto:hello@stonecrestpipes.com">
-              Contact
-            </a>
-          </div>
-
-          <div class="signup-panel" id="signup">
-            <div class="signup-icon">❦</div>
-            <h2>Get Launch Updates</h2>
-            <p class="signup-subtitle">
-              Be the first to know when we go live.
-            </p>
-
-            <form name="signup" method="POST">
-              <label class="visually-hidden" for="email">Email address</label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                placeholder="Enter your email address"
-                required
-              />
-              <button type="submit">Subscribe</button>
-            </form>
-
-            <p class="note">
-              For now, this form is just a placeholder until we connect an email service.
-            </p>
-          </div>
-
-          <div class="divider">
-            <span class="divider-mark">❦</span>
-          </div>
-        </section>
-      </main>
-    </div>
+      </div>
+    </main>
   </body>
 </html>
