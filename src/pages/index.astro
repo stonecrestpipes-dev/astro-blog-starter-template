@@ -30,7 +30,6 @@ const siteDescription =
         --space-xl: 48px;
         --space-2xl: 72px;
 
-        /* improved button text color */
         --button-text: #f3e7da;
       }
 
@@ -68,7 +67,7 @@ const siteDescription =
       .hero {
         width: min(100%, 860px);
         margin: 0 auto;
-        padding: var(--space-2xl) 24px;
+        padding: clamp(24px, 5vh, 40px) 24px var(--space-2xl);
         text-align: center;
       }
 
@@ -200,7 +199,7 @@ const siteDescription =
 
       @media (max-width: 640px) {
         .hero {
-          padding: var(--space-xl) 16px;
+          padding: 32px 16px var(--space-xl);
         }
 
         .logo {
