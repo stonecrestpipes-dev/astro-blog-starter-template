@@ -12,7 +12,6 @@ const siteDescription =
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
@@ -84,6 +83,8 @@ const siteDescription =
         font-size: 0.95rem;
         margin-bottom: 30px;
         color: var(--text-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
       }
 
       .form-row {
@@ -121,6 +122,27 @@ const siteDescription =
         cursor: pointer;
       }
 
+      button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      .form-message {
+        min-height: 24px;
+        margin-top: 18px;
+        font-size: 0.95rem;
+        color: var(--text-soft);
+      }
+
+      .form-message.success {
+        color: var(--brand);
+        font-weight: bold;
+      }
+
+      .form-message.error {
+        color: #7a1f1f;
+      }
+
       @media (max-width: 640px) {
         .hero {
           padding: 60px 16px;
@@ -153,33 +175,83 @@ const siteDescription =
       </p>
 
       <div class="signup">
-        <h2>Get Launch Updates</h2>
+        <h2>Be the first to know when we go live</h2>
 
         <p class="signup-sub">
-          Be the first to know when we go live.
+          Get launch updates
         </p>
 
         <form
+          id="mailchimp-form"
           action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
           method="POST"
-          target="_blank"
         >
           <div class="form-row">
             <input
+              id="email"
               type="email"
               name="EMAIL"
               placeholder="Enter your email address"
               required
             />
 
-            <button type="submit">Subscribe</button>
+            <button id="submit-button" type="submit">Subscribe</button>
           </div>
 
-          <div style="position: absolute; left: -5000px;">
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
             <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
           </div>
+
+          <p id="form-message" class="form-message"></p>
         </form>
       </div>
     </main>
+
+    <script is:inline>
+      const form = document.getElementById("mailchimp-form");
+      const message = document.getElementById("form-message");
+      const button = document.getElementById("submit-button");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData);
+
+        const callbackName = "mailchimpCallback_" + Date.now();
+
+        const actionUrl = form.action.replace("/post?", "/post-json?");
+        const script = document.createElement("script");
+
+        message.textContent = "Submitting...";
+        message.className = "form-message";
+        button.disabled = true;
+
+        window[callbackName] = function (response) {
+          if (response.result === "success") {
+            message.textContent = "Thank you — you're on the list.";
+            message.className = "form-message success";
+            form.reset();
+          } else {
+            message.textContent =
+              response.msg || "Something went wrong. Please try again.";
+            message.className = "form-message error";
+          }
+
+          button.disabled = false;
+          delete window[callbackName];
+          script.remove();
+        };
+
+        script.src =
+          actionUrl +
+          "&" +
+          params.toString() +
+          "&c=" +
+          callbackName;
+
+        document.body.appendChild(script);
+      });
+    </script>
   </body>
 </html>
