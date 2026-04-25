@@ -14,7 +14,6 @@ const siteDescription =
 
     <style>
       :root {
-        /* Updated to match your business card */
         --bg: #d8c2a3;
         --bg-deep: #c4a882;
         --brand: #6b2e2e;
@@ -32,10 +31,9 @@ const siteDescription =
         min-height: 100vh;
         font-family: Georgia, "Times New Roman", serif;
         color: var(--text);
-
         background:
-          radial-gradient(circle at top left, rgba(107,46,46,0.08), transparent 40%),
-          radial-gradient(circle at bottom right, rgba(90,60,40,0.12), transparent 50%),
+          radial-gradient(circle at top left, rgba(107, 46, 46, 0.08), transparent 40%),
+          radial-gradient(circle at bottom right, rgba(90, 60, 40, 0.12), transparent 50%),
           linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
       }
 
@@ -60,7 +58,6 @@ const siteDescription =
         margin-bottom: 20px;
       }
 
-      /* Reduced size */
       h1 {
         font-size: clamp(1.6rem, 3vw, 2.4rem);
         line-height: 1.2;
@@ -75,15 +72,34 @@ const siteDescription =
         margin-bottom: 40px;
       }
 
-      .signup {
-        border-top: 1px solid var(--border);
-        padding-top: 30px;
+      .pipe-divider {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 30px auto;
+        max-width: 400px;
+      }
+
+      .pipe-divider::before,
+      .pipe-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--brand);
+        opacity: 0.4;
       }
 
       .pipe-icon {
-        font-size: 1.6rem;
-        margin-bottom: 10px;
-        color: var(--brand);
+        width: 26px;
+        height: auto;
+        transform: scaleX(-1);
+        filter: brightness(0) saturate(100%)
+          invert(16%) sepia(28%) saturate(900%) hue-rotate(330deg);
+      }
+
+      .signup {
+        border-top: 1px solid var(--border);
+        padding-top: 30px;
       }
 
       .signup h2 {
@@ -99,22 +115,30 @@ const siteDescription =
         color: var(--text-soft);
       }
 
-      form {
+      .form-row {
         display: flex;
-        flex-direction: column;
         gap: 10px;
-        max-width: 420px;
+        max-width: 520px;
         margin: 0 auto;
       }
 
       input {
-        padding: 14px;
+        flex: 1;
+        padding: 14px 16px;
         border-radius: 999px;
         border: 1px solid var(--border);
         font-size: 1rem;
+        background: transparent;
+        color: var(--text);
+      }
+
+      input::placeholder {
+        color: var(--text-soft);
       }
 
       button {
+        width: 40%;
+        min-width: 130px;
         padding: 14px;
         border-radius: 999px;
         border: none;
@@ -125,23 +149,28 @@ const siteDescription =
         cursor: pointer;
       }
 
-      .note {
-        margin-top: 15px;
-        font-size: 0.85rem;
-        color: var(--text-soft);
-      }
+      @media (max-width: 640px) {
+        .hero {
+          padding: 40px 16px;
+        }
 
-      .divider {
-        margin-top: 30px;
-        font-size: 1.4rem;
-        color: var(--brand);
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .form-row {
+          flex-direction: column;
+        }
+
+        button {
+          width: 100%;
+        }
       }
     </style>
   </head>
 
   <body>
     <main class="hero">
-
       <img src="/logo.png" class="logo" alt="Stonecrest Pipes logo" />
 
       <div class="eyebrow">Coming Soon</div>
@@ -153,11 +182,11 @@ const siteDescription =
         enthusiasts, and the wider world of tobacco pipes.
       </p>
 
+      <div class="pipe-divider">
+        <img src="/pipe.png" class="pipe-icon" alt="pipe icon" />
+      </div>
+
       <div class="signup">
-
-        <!-- Pipe-style icon -->
-        <div class="pipe-icon">⎯◡⎯</div>
-
         <h2>Get Launch Updates</h2>
 
         <p class="signup-sub">
@@ -169,27 +198,21 @@ const siteDescription =
           method="POST"
           target="_blank"
         >
-          <input
-            type="email"
-            name="EMAIL"
-            placeholder="Enter your email address"
-            required
-          />
+          <div class="form-row">
+            <input
+              type="email"
+              name="EMAIL"
+              placeholder="Enter your email address"
+              required
+            />
 
-          <!-- Mailchimp bot field -->
+            <button type="submit">Subscribe</button>
+          </div>
+
           <div style="position: absolute; left: -5000px;">
             <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
           </div>
-
-          <button type="submit">Subscribe</button>
         </form>
-
-        <p class="note">
-          No spam. Just updates on launch and new features.
-        </p>
-
-        <div class="divider">⎯◡⎯</div>
-
       </div>
     </main>
   </body>
