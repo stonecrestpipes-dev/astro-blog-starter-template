@@ -33,13 +33,7 @@ const siteDescription =
         --button-text: #f3e7da;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
@@ -50,12 +44,6 @@ const siteDescription =
           radial-gradient(circle at top left, rgba(107, 46, 46, 0.08), transparent 40%),
           radial-gradient(circle at bottom right, rgba(90, 60, 40, 0.12), transparent 50%),
           linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
-      }
-
-      a,
-      button,
-      input {
-        font: inherit;
       }
 
       input:focus-visible,
@@ -74,14 +62,12 @@ const siteDescription =
       .logo {
         width: 280px;
         max-width: 100%;
-        height: auto;
         margin-bottom: var(--space-xl);
       }
 
       h1 {
         font-size: clamp(1.6rem, 3vw, 2.4rem);
-        line-height: 1.2;
-        margin: 0 0 var(--space-lg);
+        margin-bottom: var(--space-lg);
         text-transform: uppercase;
       }
 
@@ -95,9 +81,6 @@ const siteDescription =
 
       .intro span {
         display: block;
-      }
-
-      .intro span + span {
         margin-top: var(--space-md);
       }
 
@@ -107,10 +90,9 @@ const siteDescription =
       }
 
       .signup h2 {
-        margin: 0 0 var(--space-xl);
+        margin-bottom: var(--space-xl);
         font-size: 1.25rem;
         line-height: 1.4;
-        letter-spacing: 0.04em;
       }
 
       .form-row {
@@ -124,87 +106,34 @@ const siteDescription =
         position: absolute;
         width: 1px;
         height: 1px;
-        padding: 0;
-        margin: -1px;
         overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
       }
 
-      input[type="email"] {
+      input {
         flex: 1;
-        min-width: 0;
         padding: 18px 20px;
         border-radius: 999px;
         border: 1px solid var(--border);
-        font-size: 1.05rem;
         background: rgba(216, 194, 163, 0.35);
-        color: var(--text);
-      }
-
-      input[type="email"]::placeholder {
-        color: var(--text-soft);
-        opacity: 0.85;
       }
 
       button {
         width: 40%;
         min-width: 170px;
-        padding: 18px 20px;
+        padding: 18px;
         border-radius: 999px;
         border: none;
         background: var(--brand);
         color: var(--button-text);
-        font-weight: 700;
-        font-size: 1rem;
-        letter-spacing: 0.08em;
+        font-weight: bold;
         cursor: pointer;
-        transition: transform 0.15s ease, filter 0.15s ease;
-      }
-
-      button:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.05);
-      }
-
-      button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
       }
 
       .form-message {
-        min-height: 24px;
-        margin: var(--space-md) 0 0;
-        font-size: 0.95rem;
-        line-height: 1.5;
-        color: var(--text-soft);
-      }
-
-      .form-message.success {
-        color: var(--brand);
-        font-weight: 700;
-      }
-
-      .form-message.error {
-        color: #7a1f1f;
-        font-weight: 700;
+        margin-top: var(--space-md);
       }
 
       @media (max-width: 640px) {
-        .hero {
-          padding: 32px 16px var(--space-xl);
-        }
-
-        .logo {
-          width: 240px;
-          margin-bottom: var(--space-lg);
-        }
-
-        h1 {
-          font-size: 1.75rem;
-        }
-
         .form-row {
           flex-direction: column;
         }
@@ -226,16 +155,17 @@ const siteDescription =
         <span>A home for your briar and leaf.</span>
         <span>Tasting notes. Cellar inventory. Collection tracking.</span>
         <span>Everything you love about the pipe, finally organized.</span>
-        </p>
+        <span>Stonecrest Pipes. Coming soon.</span>
+      </p>
 
-      <section class="signup" aria-labelledby="signup-heading">
-        <h2 id="signup-heading">
+      <section class="signup">
+        <h2>
           Get your rotation ready. Be the first to know when the platform goes live.
         </h2>
 
         <form
           id="mailchimp-form"
-          action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID"
+          action="https://stonecrestpipes.us2.list-manage.com/subscribe/post?u=c3b9974aae8355c7864339251&id=1e529e9700&f_id=0043c2e1f0"
           method="POST"
         >
           <div class="form-row">
@@ -246,71 +176,26 @@ const siteDescription =
               type="email"
               name="EMAIL"
               placeholder="Enter your email address"
-              autocomplete="email"
               required
             />
 
-            <button id="submit-button" type="submit">Follow the Build</button>
+            <button type="submit">Follow the Build</button>
           </div>
 
-          <div style="position: absolute; left: -5000px;" aria-hidden="true">
-            <input type="text" name="b_YOUR_U_YOUR_ID" tabindex="-1" value="" />
+          <!-- Honeypot -->
+          <div style="position:absolute; left:-5000px;">
+            <input
+              type="text"
+              name="b_c3b9974aae8355c7864339251_1e529e9700"
+              tabindex="-1"
+              value=""
+            />
           </div>
 
-          <p
-            id="form-message"
-            class="form-message"
-            role="status"
-            aria-live="polite"
-          ></p>
+          <p id="form-message" class="form-message"></p>
         </form>
       </section>
     </main>
-
-    <script is:inline>
-      const form = document.getElementById("mailchimp-form");
-      const message = document.getElementById("form-message");
-      const button = document.getElementById("submit-button");
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-        const params = new URLSearchParams(formData);
-
-        const callbackName = "mailchimpCallback_" + Date.now();
-        const actionUrl = form.action.replace("/post?", "/post-json?");
-        const script = document.createElement("script");
-
-        message.textContent = "Submitting...";
-        message.className = "form-message";
-        button.disabled = true;
-
-        window[callbackName] = function (response) {
-          if (response.result === "success") {
-            message.textContent = "Thank you — you're on the list.";
-            message.className = "form-message success";
-            form.reset();
-          } else {
-            message.textContent =
-              response.msg || "Something went wrong. Please try again.";
-            message.className = "form-message error";
-          }
-
-          button.disabled = false;
-          delete window[callbackName];
-          script.remove();
-        };
-
-        script.src =
-          actionUrl +
-          "&" +
-          params.toString() +
-          "&c=" +
-          callbackName;
-
-        document.body.appendChild(script);
-      });
-    </script>
   </body>
 </html>
+
