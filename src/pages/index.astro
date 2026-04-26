@@ -62,13 +62,17 @@ const siteDescription =
       .logo {
         width: 280px;
         max-width: 100%;
-        margin-bottom: var(--space-xl);
+        margin-bottom: var(--space-lg); /* tightened */
       }
 
       h1 {
-        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+        line-height: 1.2;
         margin-bottom: var(--space-lg);
         text-transform: uppercase;
+
+        /* ✨ micro-polish */
+        letter-spacing: 0.06em;
       }
 
       .intro {
@@ -126,7 +130,14 @@ const siteDescription =
         background: var(--brand);
         color: var(--button-text);
         font-weight: bold;
+        letter-spacing: 0.08em;
         cursor: pointer;
+        transition: transform 0.15s ease, filter 0.15s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
       }
 
       .form-message {
@@ -155,7 +166,8 @@ const siteDescription =
         <span>A home for your briar and leaf.</span>
         <span>Tasting notes. Cellar inventory. Collection tracking.</span>
         <span>Everything you love about the pipe, finally organized.</span>
-        </p>
+        <span>Stonecrest Pipes. Coming soon.</span>
+      </p>
 
       <section class="signup">
         <h2>
@@ -163,7 +175,6 @@ const siteDescription =
         </h2>
 
         <form
-          id="mailchimp-form"
           action="https://stonecrestpipes.us2.list-manage.com/subscribe/post?u=c3b9974aae8355c7864339251&id=1e529e9700&f_id=0043c2e1f0"
           method="POST"
         >
@@ -181,7 +192,6 @@ const siteDescription =
             <button type="submit">Follow the Build</button>
           </div>
 
-          <!-- Honeypot -->
           <div style="position:absolute; left:-5000px;">
             <input
               type="text"
@@ -190,8 +200,6 @@ const siteDescription =
               value=""
             />
           </div>
-
-          <p id="form-message" class="form-message"></p>
         </form>
       </section>
     </main>
