@@ -18,14 +18,13 @@ const socialImage = `${siteUrl}/og-image.png`;
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <!-- Open Graph -->
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content="Stonecrest Pipes" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
@@ -49,7 +48,9 @@ const socialImage = `${siteUrl}/og-image.png`;
         --button-text: #f3e7da;
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
@@ -60,6 +61,12 @@ const socialImage = `${siteUrl}/og-image.png`;
           radial-gradient(circle at top left, rgba(107, 46, 46, 0.08), transparent 40%),
           radial-gradient(circle at bottom right, rgba(90, 60, 40, 0.12), transparent 50%),
           linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      }
+
+      input:focus-visible,
+      button:focus-visible {
+        outline: 3px solid rgba(107, 46, 46, 0.45);
+        outline-offset: 3px;
       }
 
       .hero {
@@ -80,7 +87,7 @@ const socialImage = `${siteUrl}/og-image.png`;
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
         gap: var(--space-xl);
         align-items: center;
       }
@@ -92,16 +99,25 @@ const socialImage = `${siteUrl}/og-image.png`;
       h1 {
         font-size: clamp(1.8rem, 2.5vw, 2.2rem);
         line-height: 1.2;
-        margin-bottom: var(--space-lg);
+        margin: 0 0 var(--space-lg);
         text-transform: uppercase;
         letter-spacing: 0.06em;
       }
 
       .intro {
         max-width: 680px;
+        margin: 0;
         font-size: 1.1rem;
         line-height: 1.7;
         color: var(--text-soft);
+      }
+
+      .tagline {
+        display: block;
+        margin-top: var(--space-sm);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
       }
 
       .signup {
@@ -110,7 +126,7 @@ const socialImage = `${siteUrl}/og-image.png`;
       }
 
       .signup h2 {
-        margin-bottom: var(--space-xl);
+        margin: 0 0 var(--space-xl);
         font-size: 1.25rem;
         line-height: 1.4;
       }
@@ -122,31 +138,89 @@ const socialImage = `${siteUrl}/og-image.png`;
         max-width: 420px;
       }
 
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
       input {
-        padding: 18px;
+        width: 100%;
+        padding: 18px 20px;
         border-radius: 999px;
         border: 1px solid var(--border);
         background: rgba(216, 194, 163, 0.35);
+        color: var(--text);
+        font-size: 1rem;
+      }
+
+      input::placeholder {
+        color: var(--text-soft);
       }
 
       button {
+        width: 100%;
         padding: 18px;
         border-radius: 999px;
         border: none;
         background: var(--brand);
         color: var(--button-text);
         font-weight: bold;
+        letter-spacing: 0.08em;
         cursor: pointer;
+        transition: transform 0.15s ease, filter 0.15s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
       }
 
       @media (max-width: 800px) {
-        .hero-grid { display: block; }
-        .content { text-align: center; }
+        .hero {
+          width: min(100%, 860px);
+          text-align: center;
+        }
+
+        .hero-grid {
+          display: block;
+        }
+
+        .content {
+          text-align: center;
+        }
+
+        .intro {
+          margin: 0 auto var(--space-xl);
+        }
+
         .signup {
           border-left: none;
           border-top: 1px solid var(--border);
           padding-left: 0;
           padding-top: var(--space-xl);
+        }
+
+        .form-row {
+          max-width: 580px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 32px 16px var(--space-xl);
+        }
+
+        .logo {
+          width: 240px;
+        }
+
+        h1 {
+          font-size: 1.75rem;
         }
       }
     </style>
@@ -159,19 +233,21 @@ const socialImage = `${siteUrl}/og-image.png`;
       </div>
 
       <div class="hero-grid">
-        <section class="content">
-          <h1>Built Around the Craft of Pipe Smoking</h1>
+        <section class="content" aria-labelledby="main-heading">
+          <h1 id="main-heading">Built Around the Craft of Pipe Smoking</h1>
 
           <p class="intro">
-            Every Pipe. Every Blend. Every Note. Never forget a smoke again.
+            Every Pipe. Every Blend. Every Note. Never forget a smoke again.<br /><br />
             Track your pipe rotations, manage your cellar inventory, and refine
-            your palate with detailed tasting logs. The ultimate companion for
-            the organized enthusiast.
+            your palate with detailed tasting logs.<br /><br />
+            <strong class="tagline">
+              The ultimate companion for the organized enthusiast.
+            </strong>
           </p>
         </section>
 
-        <section class="signup">
-          <h2>
+        <section class="signup" aria-labelledby="signup-heading">
+          <h2 id="signup-heading">
             Get your rotation ready. Be the first to know when the platform goes live.
           </h2>
 
@@ -180,17 +256,21 @@ const socialImage = `${siteUrl}/og-image.png`;
             method="POST"
           >
             <div class="form-row">
+              <label class="visually-hidden" for="email">Email address</label>
+
               <input
+                id="email"
                 type="email"
                 name="EMAIL"
                 placeholder="Enter your email address"
+                autocomplete="email"
                 required
               />
 
               <button type="submit">Follow the Build</button>
             </div>
 
-            <div style="position:absolute; left:-5000px;">
+            <div style="position:absolute; left:-5000px;" aria-hidden="true">
               <input
                 type="text"
                 name="b_c3b9974aae8355c7864339251_1e529e9700"
